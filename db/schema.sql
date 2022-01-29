@@ -4,7 +4,7 @@ CREATE DATABASE employee_tracker_db;
 
 USE employee_tracker_db;
 
-CREATE TABLE departments (
+CREATE TABLE department (
 
 id INT NOT NULL AUTO_INCREMENT,
 
@@ -14,7 +14,7 @@ PRIMARY KEY(id)
 
 );
 
-CREATE TABLE roles (
+CREATE TABLE role (
 
 id INT NOT NULL AUTO_INCREMENT,
 
@@ -28,7 +28,7 @@ PRIMARY KEY (id)
 
 );
 
-CREATE TABLE employees (
+CREATE TABLE employee (
 
 id INT NOT NULL AUTO_INCREMENT,
 
