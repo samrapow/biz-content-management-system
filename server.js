@@ -126,25 +126,23 @@ function addRole() {
   inquirer
     .prompt([
       {
-        type: "input",
-        message: "What's the name of the role?",
-        name: "roleName"
+        type: 'input',
+        message: 'What is the role name?',
+        name: 'roleName'
       },
       {
-        type: "input",
-        message: "What is the salary for this role?",
-        name: "salaryTotal"
+        type: 'input',
+        message: 'What salary does the role have?',
+        name: 'roleSalary'
       },
       {
-        type: "input",
-        message: "What is the department id number?",
-        name: "deptID"
+        type: 'input',
+        message: 'What is the department id number for the role?',
+        name: 'deptID'
       }
     ])
     .then(function(answer) {
-
-
-      connection.query("INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)", [answer.roleName, answer.salaryTotal, answer.deptID], function(err, res) {
+      connection.query('INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)', [answer.roleName, answer.roleSalary, answer.deptID], function(err, res) {
         if (err) throw err;
         console.table(res);
         homeCommands();
@@ -156,30 +154,28 @@ function addEmployee() {
   inquirer
     .prompt([
       {
-        type: "input",
-        message: "What's the first name of the employee?",
-        name: "eeFirstName"
+        type: 'input',
+        message: 'What is the first name of the employee?',
+        name: 'employeeFirstName'
       },
       {
-        type: "input",
-        message: "What's the last name of the employee?",
-        name: "eeLastName"
+        type: 'input',
+        message: 'What is the last name of the employee?',
+        name: 'employeeLastName'
       },
       {
-        type: "input",
-        message: "What is the employee's role id number?",
-        name: "roleID"
+        type: 'input',
+        message: 'What is the role id number of the employee?',
+        name: 'roleID'
       },
       {
-        type: "input",
-        message: "What is the manager id number?",
-        name: "managerID"
+        type: 'input',
+        message: 'What is the manager id number of the employee?',
+        name: 'managerID'
       }
     ])
     .then(function(answer) {
-
-      
-      connection.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [answer.eeFirstName, answer.eeLastName, answer.roleID, answer.managerID], function(err, res) {
+      connection.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)', [answer.employeeFirstName, answer.employeeLastName, answer.roleID, answer.managerID], function(err, res) {
         if (err) throw err;
         console.table(res);
         homeCommands();
@@ -187,37 +183,30 @@ function addEmployee() {
     });
 }
 
-//Since we're using inquirer, we can pass the query into the method as an array
 
 function updateEmployeeRole() {
   inquirer
     .prompt([
       {
-        type: "input",
-        message: "Which employee would you like to update?",
-        name: "eeUpdate"
+        type: 'input',
+        message: 'Which employee would you like to update the role of?',
+        name: 'employeeRoleUpdate'
       },
 
       {
-        type: "input",
-        message: "What do you want to update to?",
-        name: "updateRole"
+        type: 'input',
+        message: 'What role do you want to update the role too?',
+        name: 'updateRole'
       }
     ])
     .then(function(answer) {
-      // let query = `INSERT INTO department (name) VALUES ("${answer.deptName}")`
-      //let query = `'UPDATE employee SET role_id=${answer.updateRole} WHERE first_name= ${answer.eeUpdate}`;
-      //console.log(query);
-
-      connection.query('UPDATE employee SET role_id=? WHERE first_name= ?',[answer.updateRole, answer.eeUpdate],function(err, res) {
+      connection.query('UPDATE employee SET role_id=? WHERE first_name= ?',[answer.updateRole, answer.employeeRoleUpdate],function(err, res) {
         if (err) throw err;
         console.table(res);
         homeCommands();
       });
     });
 }
-
-
 
 function quit() {
   connection.end();
