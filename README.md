@@ -10,7 +10,7 @@ I created an employee content management system.  I use inquirer to determine wh
 
 ## Link
 
-![Employee Content Management System Linked Demo](https://watch.screencastify.com/v/wonb3wojllynO8Rt72iM)
+[Employee Content Management System Linked Demo](https://watch.screencastify.com/v/wonb3wojllynO8Rt72iM)
 
 ## GitHub Repository
 
